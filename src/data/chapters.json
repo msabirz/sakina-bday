@@ -1,0 +1,86 @@
+[
+  {
+    "id": "letter",
+    "order": 1,
+    "missionLabel": "Mission 1",
+    "title": "Today's Letter",
+    "subtitle": "Read your first orders.",
+    "type": "letter",
+    "icon": "Mail",
+    "unlockAt": "2026-08-08T00:00:00+05:30",
+    "xpReward": 100,
+    "estMinutes": 2
+  },
+  {
+    "id": "vault",
+    "order": 2,
+    "missionLabel": "Mission 2",
+    "title": "Memory Vault",
+    "subtitle": "Unlock what we've already lived.",
+    "type": "vault",
+    "icon": "Archive",
+    "unlockAt": "2026-08-08T09:00:00+05:30",
+    "xpReward": 150,
+    "estMinutes": 4
+  },
+  {
+    "id": "songs",
+    "order": 3,
+    "missionLabel": "Mission 3",
+    "title": "The Soundtrack",
+    "subtitle": "Solve the puzzle hidden in every song.",
+    "type": "songs",
+    "icon": "Disc3",
+    "unlockAt": "2026-08-08T12:00:00+05:30",
+    "xpReward": 150,
+    "estMinutes": 5
+  },
+  {
+    "id": "voice",
+    "order": 4,
+    "missionLabel": "Mission 4",
+    "title": "Voice Message",
+    "subtitle": "Decode a message only you can hear.",
+    "type": "voice",
+    "icon": "AudioLines",
+    "unlockAt": "2026-08-08T15:00:00+05:30",
+    "xpReward": 150,
+    "estMinutes": 3
+  },
+  {
+    "id": "hunt",
+    "order": 5,
+    "missionLabel": "Mission 5",
+    "title": "Treasure Hunt",
+    "subtitle": "Locate the hidden signal.",
+    "type": "hunt",
+    "icon": "Compass",
+    "unlockAt": "2026-08-08T18:00:00+05:30",
+    "xpReward": 200,
+    "estMinutes": 5
+  },
+  {
+    "id": "guess",
+    "order": 6,
+    "missionLabel": "Mission 6",
+    "title": "Guess Your Gift",
+    "subtitle": "Six trials. One secret.",
+    "type": "guess",
+    "icon": "Gift",
+    "unlockAt": "2026-08-08T20:00:00+05:30",
+    "xpReward": 350,
+    "estMinutes": 12
+  },
+  {
+    "id": "delivery",
+    "order": 7,
+    "missionLabel": "Mission 7",
+    "title": "Final Delivery",
+    "subtitle": "Await the last transmission.",
+    "type": "courier",
+    "icon": "Truck",
+    "unlockAt": "2026-08-08T20:30:00+05:30",
+    "xpReward": 500,
+    "estMinutes": 6
+  }
+]

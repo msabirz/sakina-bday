@@ -1,0 +1,27 @@
+{
+  "mode": "delayed",
+  "currentShippingStepIndex": 2,
+  "delivered": {
+    "giftName": "The Gift",
+    "giftDescription": "It's here. Everything you unlocked today was leading to this one box, sitting exactly where it belongs — with you.",
+    "giftImage": "/images/gift-silhouette.svg",
+    "celebrationMessage": "Mission complete. Every clue, every song, every memory — it was all real. Happy birthday, my love."
+  },
+  "delayed": {
+    "courierMessageLines": [
+      "I wanted this to reach you today.",
+      "Unfortunately the courier had different plans.",
+      "Some surprises are worth waiting for.",
+      "Your journey ends when the gift reaches you."
+    ],
+    "eta": "Any day now."
+  },
+  "surprise": {
+    "title": "One Night, Just Us",
+    "subtitle": "The gift was never going to fit in a box.",
+    "dateTime": "2026-08-15T20:00:00+05:30",
+    "location": "A table for two — details land in your inbox the morning of.",
+    "description": "No candles you have to blow out early. No plans to rush through. Just one night set aside, entirely for us.",
+    "dressCode": "Wear the thing you feel unstoppable in."
+  }
+}

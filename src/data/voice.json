@@ -1,0 +1,7 @@
+{
+  "title": "A Message From Headquarters",
+  "duration": "0:47",
+  "src": "/audio/voice-message.wav",
+  "transcriptTeaser": "Hey... it's me. If you're listening to this, you made it further than I expected.",
+  "message": "Recorded at 2am because I couldn't say this out loud without laughing at myself first. Replace public/audio/voice-message.wav with a real recording (any format works — just update the path in this file or via the admin panel)."
+}

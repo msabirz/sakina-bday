@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
+  <defs>
+    <linearGradient id="bodyGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2a2a2a" />
+      <stop offset="55%" stop-color="#111111" />
+      <stop offset="100%" stop-color="#000000" />
+    </linearGradient>
+    <linearGradient id="screenGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a3a3a" />
+      <stop offset="100%" stop-color="#0a0a0a" />
+    </linearGradient>
+    <linearGradient id="camGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E9CE7A" />
+      <stop offset="100%" stop-color="#D4AF37" />
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="150" cy="272" rx="62" ry="9" fill="#000000" opacity="0.35" />
+
+  <!-- phone body -->
+  <rect x="93" y="34" width="114" height="234" rx="26" fill="url(#bodyGrad)" stroke="#3a3a3a" stroke-width="1.5" />
+
+  <!-- camera bar -->
+  <rect x="93" y="52" width="114" height="46" rx="14" fill="#161616" opacity="0.9" />
+  <circle cx="122" cy="75" r="13" fill="url(#camGrad)" opacity="0.9" />
+  <circle cx="122" cy="75" r="6" fill="#0a0a0a" />
+  <circle cx="160" cy="75" r="13" fill="url(#camGrad)" opacity="0.9" />
+  <circle cx="160" cy="75" r="6" fill="#0a0a0a" />
+  <circle cx="184" cy="63" r="6" fill="#D4AF37" opacity="0.7" />
+
+  <!-- screen -->
+  <rect x="101" y="106" width="98" height="150" rx="10" fill="url(#screenGrad)" />
+  <rect x="130" y="118" width="40" height="4" rx="2" fill="#D4AF37" opacity="0.6" />
+  <rect x="112" y="134" width="76" height="8" rx="4" fill="#ffffff" opacity="0.06" />
+  <rect x="112" y="150" width="56" height="8" rx="4" fill="#ffffff" opacity="0.06" />
+
+  <!-- side button -->
+  <rect x="205" y="120" width="3" height="30" rx="1.5" fill="#D4AF37" opacity="0.6" />
+</svg>

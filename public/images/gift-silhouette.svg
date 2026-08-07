@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
+  <defs>
+    <linearGradient id="bottleGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E9CE7A" />
+      <stop offset="100%" stop-color="#8a6d1f" />
+    </linearGradient>
+    <linearGradient id="capGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F4E2A0" />
+      <stop offset="100%" stop-color="#D4AF37" />
+    </linearGradient>
+  </defs>
+  <ellipse cx="150" cy="268" rx="70" ry="10" fill="#000000" opacity="0.35" />
+  <rect x="120" y="60" width="20" height="30" rx="4" fill="url(#capGrad)" />
+  <rect x="112" y="40" width="36" height="26" rx="8" fill="url(#capGrad)" />
+  <path
+    d="M100 100 C100 90 108 84 120 84 H180 C192 84 200 90 200 100 V230 C200 248 186 260 168 260 H132 C114 260 100 248 100 230 Z"
+    fill="url(#bottleGrad)"
+  />
+  <rect x="118" y="130" width="64" height="70" rx="6" fill="#0d0d0d" opacity="0.25" />
+  <rect x="128" y="145" width="44" height="10" rx="2" fill="#F4E2A0" opacity="0.8" />
+  <rect x="128" y="162" width="30" height="6" rx="2" fill="#F4E2A0" opacity="0.5" />
+</svg>

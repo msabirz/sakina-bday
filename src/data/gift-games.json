@@ -1,0 +1,42 @@
+{
+  "wordScramble": {
+    "scrambled": "RLPEUFME",
+    "answer": "PERFUME",
+    "hint": "You'd dab it on your wrist before walking out the door."
+  },
+  "twentyQuestions": [
+    { "id": "q1", "question": "Can you wear it?", "answer": "yes" },
+    { "id": "q2", "question": "Can it fit inside one hand?", "answer": "yes" },
+    { "id": "q3", "question": "Does it need batteries?", "answer": "no" },
+    { "id": "q4", "question": "Would you use it almost every day?", "answer": "yes" },
+    { "id": "q5", "question": "Does it have a scent?", "answer": "yes" },
+    { "id": "q6", "question": "Is it bigger than a shoebox?", "answer": "no" },
+    { "id": "q7", "question": "Would it sit on your dressing table?", "answer": "yes" },
+    { "id": "q8", "question": "Is it a piece of clothing?", "answer": "no" },
+    { "id": "q9", "question": "Does it come in a bottle?", "answer": "yes" },
+    { "id": "q10", "question": "Could you find it in a department store?", "answer": "yes" }
+  ],
+  "higherLower": {
+    "actualPrice": 92,
+    "currency": "$",
+    "steps": [20, 45, 65, 80, 95, 120, 160, 220]
+  },
+  "blurReveal": {
+    "image": "/images/gift-silhouette.svg",
+    "caption": "Getting warmer."
+  },
+  "emojiPuzzle": {
+    "emojis": ["🌸", "🧴", "💐"],
+    "answer": "PERFUME",
+    "hint": "Something you'd spray, not wear."
+  },
+  "multipleChoice": {
+    "prompt": "Four boxes. One of them holds your gift.",
+    "options": [
+      { "id": "box-a", "label": "Box A — tied with gold ribbon", "correct": false },
+      { "id": "box-b", "label": "Box B — sealed with a wax stamp", "correct": true },
+      { "id": "box-c", "label": "Box C — wrapped in linen paper", "correct": false },
+      { "id": "box-d", "label": "Box D — hidden inside a hat box", "correct": false }
+    ]
+  }
+}

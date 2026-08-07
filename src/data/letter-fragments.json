@@ -1,0 +1,18 @@
+{
+  "targetPhrase": "GOOGLE PIXEL 10",
+  "fragments": [
+    { "id": "frag-01", "source": "begin", "char": "G" },
+    { "id": "frag-02", "source": "chapter:letter", "char": "O" },
+    { "id": "frag-03", "source": "chapter:vault", "char": "O" },
+    { "id": "frag-04", "source": "chapter:songs", "char": "G" },
+    { "id": "frag-05", "source": "chapter:voice", "char": "L" },
+    { "id": "frag-06", "source": "chapter:hunt", "char": "E" },
+    { "id": "frag-07", "source": "game:word-scramble", "char": "P" },
+    { "id": "frag-08", "source": "game:twenty-questions", "char": "I" },
+    { "id": "frag-09", "source": "game:higher-lower", "char": "X" },
+    { "id": "frag-10", "source": "game:blur-reveal", "char": "E" },
+    { "id": "frag-11", "source": "game:emoji-puzzle", "char": "L" },
+    { "id": "frag-12", "source": "game:multiple-choice", "char": "1" },
+    { "id": "frag-13", "source": "chapter:guess", "char": "0" }
+  ]
+}

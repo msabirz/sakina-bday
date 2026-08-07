@@ -1,0 +1,74 @@
+[
+  {
+    "id": "mem-01",
+    "date": "The Beginning",
+    "title": "The First Hello",
+    "description": "A conversation that was supposed to last five minutes. It didn't.",
+    "gradient": [
+      "#D4AF37",
+      "#7a611c"
+    ],
+    "emoji": "✨",
+    "image": "/uploads/photos/IMG_20201206_161132.jpg"
+  },
+  {
+    "id": "mem-02",
+    "date": "First Date",
+    "title": "The Restaurant We Couldn't Afford",
+    "description": "We ordered dessert first. It felt like a sign.",
+    "gradient": [
+      "#E7A7B7",
+      "#7a3d49"
+    ],
+    "emoji": "🥂",
+    "image": "/uploads/photos/IMG_20211216_112207.jpg"
+  },
+  {
+    "id": "mem-03",
+    "date": "That Summer",
+    "title": "The Trip We Almost Cancelled",
+    "description": "Best decision we almost didn't make.",
+    "gradient": [
+      "#D4AF37",
+      "#E7A7B7"
+    ],
+    "emoji": "🌊",
+    "image": "/uploads/photos/IMG_20221225_110417.jpg"
+  },
+  {
+    "id": "mem-04",
+    "date": "A Random Day",
+    "title": "The Day of Nothing Special",
+    "description": "No occasion. No plan. Somehow still one of the best days.",
+    "gradient": [
+      "#3a3a3a",
+      "#D4AF37"
+    ],
+    "emoji": "☕",
+    "image": "/uploads/photos/IMG_20220821_183014.jpg"
+  },
+  {
+    "id": "mem-05",
+    "date": "The Big Day",
+    "title": "The Promise",
+    "description": "Some words changed the rest of our story.",
+    "gradient": [
+      "#E7A7B7",
+      "#D4AF37"
+    ],
+    "emoji": "💍",
+    "image": "/uploads/photos/IMG_20230905_235746.jpg"
+  },
+  {
+    "id": "mem-06",
+    "date": "Today",
+    "title": "This Exact Moment",
+    "description": "You. Here. Playing a mission I built for you. This is already my favorite memory of the year.",
+    "gradient": [
+      "#D4AF37",
+      "#FFFFFF"
+    ],
+    "emoji": "🕯️",
+    "image": "/uploads/photos/WhatsApp Image 2026-08-07 at 17.26.38.jpeg"
+  }
+]

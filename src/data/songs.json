@@ -1,0 +1,35 @@
+[
+  {
+    "id": "song-01",
+    "title": "Perfect",
+    "artist": "Ed Sheeran",
+    "spotifyEmbedUrl": "https://open.spotify.com/embed/track/0tgVpDi06FyKpA1z0VMD4v?utm_source=generator&theme=0",
+    "message": "The one that was playing when I knew. Replace this with 'our song' in the admin panel.",
+    "gradient": [
+      "#D4AF37",
+      "#2b2210"
+    ]
+  },
+  {
+    "id": "song-02",
+    "title": "Lag Ja Gale",
+    "artist": "Kishore Kumar",
+    "spotifyEmbedUrl": "https://open.spotify.com/embed/track/5Y5c5bJK0O7KJDDAYKkppH?utm_source=generator&theme=0",
+    "message": "The slow-dance-in-the-kitchen song. Every single time.",
+    "gradient": [
+      "#E7A7B7",
+      "#3a1c22"
+    ]
+  },
+  {
+    "id": "song-03",
+    "title": "Tum Ho Toh",
+    "artist": "Farhan A",
+    "spotifyEmbedUrl": "https://open.spotify.com/embed/track/2uy15favOgEOtS8wjAD9B1?utm_source=generator&theme=0",
+    "message": "Sunday mornings, coffee, and absolutely nowhere to be.",
+    "gradient": [
+      "#A0A0A0",
+      "#1c1c1c"
+    ]
+  }
+]

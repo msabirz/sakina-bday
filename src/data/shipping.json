@@ -1,0 +1,7 @@
+[
+  { "id": "packed", "label": "Packed", "description": "Wrapped, boxed, and sealed with more care than strictly necessary.", "icon": "PackageCheck" },
+  { "id": "warehouse", "label": "Left Warehouse", "description": "It said goodbye to its shelf and started its journey to you.", "icon": "Warehouse" },
+  { "id": "travelling", "label": "Travelling", "description": "Somewhere between there and here, taking its time.", "icon": "Truck" },
+  { "id": "home", "label": "Coming Home", "description": "Closer than it's ever been. Almost.", "icon": "MapPin" },
+  { "id": "with-you", "label": "With You", "description": "Right where it belongs.", "icon": "Heart" }
+]

@@ -1,0 +1,13 @@
+[
+  { "id": "first-step", "title": "First Step", "description": "Began the mission.", "icon": "Play", "xp": 25, "hidden": false },
+  { "id": "letter-read", "title": "Field Ready", "description": "Read today's letter in full.", "icon": "Mail", "xp": 25, "hidden": false },
+  { "id": "vault-opened", "title": "Time Traveler", "description": "Opened the Memory Vault.", "icon": "Archive", "xp": 25, "hidden": false },
+  { "id": "all-songs", "title": "Perfect Playlist", "description": "Listened to every track in the soundtrack.", "icon": "Disc3", "xp": 40, "hidden": false },
+  { "id": "voice-heard", "title": "Signal Received", "description": "Played the voice message.", "icon": "AudioLines", "xp": 25, "hidden": false },
+  { "id": "star-finder", "title": "Sharp-Eyed", "description": "Found a hidden star.", "icon": "Sparkles", "xp": 50, "hidden": true },
+  { "id": "konami", "title": "Old-School Agent", "description": "Entered a legendary code.", "icon": "Gamepad2", "xp": 75, "hidden": true },
+  { "id": "shaken", "title": "Shaken, Not Stirred", "description": "Shook the device like it owed you money.", "icon": "Vibrate", "xp": 50, "hidden": true },
+  { "id": "long-presser", "title": "Patient Investigator", "description": "Held on a little longer than most would.", "icon": "Hand", "xp": 30, "hidden": true },
+  { "id": "games-complete", "title": "Master Detective", "description": "Completed every trial in Guess Your Gift.", "icon": "Trophy", "xp": 100, "hidden": false },
+  { "id": "mission-complete", "title": "Mission Complete", "description": "Completed every mission available today.", "icon": "Medal", "xp": 150, "hidden": false }
+]
