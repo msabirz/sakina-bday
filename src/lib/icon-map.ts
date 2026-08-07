@@ -17,6 +17,8 @@ import {
   Trophy,
   Medal,
   Play,
+  Puzzle,
+  Clapperboard,
   type LucideIcon,
 } from "lucide-react";
 
@@ -39,6 +41,8 @@ export const ICON_MAP: Record<string, LucideIcon> = {
   Trophy,
   Medal,
   Play,
+  Puzzle,
+  Clapperboard,
 };
 
 export function getIcon(name: string): LucideIcon {

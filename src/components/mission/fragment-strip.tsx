@@ -10,9 +10,10 @@ import { useLetterFragments } from "@/hooks/use-letter-fragments";
  * A row of 13 rune-like slots on Mission Control. Each flips to reveal a
  * letter the moment its source (a mission, a mini-game, beginning the
  * mission) completes — but the slots sit in a shuffled, persisted order, so
- * even a mostly-full row never reads as a partial word. Only once every
- * slot is filled — naturally the moment Mission 7 unlocks — does the full
- * set exist to be arranged there.
+ * even a mostly-full row never reads as a partial word. All 13 are
+ * guaranteed collected by the time the mission right after "Guess Your
+ * Gift" unlocks (completing it is the 13th and final source) — well before
+ * the finale, where DecodePuzzle actually arranges them.
  */
 export function FragmentStrip() {
   const { slots, collectedCount, total, allCollected } = useLetterFragments();

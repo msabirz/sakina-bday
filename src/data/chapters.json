@@ -72,9 +72,33 @@
     "estMinutes": 12
   },
   {
-    "id": "delivery",
+    "id": "jigsaw",
     "order": 7,
     "missionLabel": "Mission 7",
+    "title": "Piece It Together",
+    "subtitle": "A picture, scrambled. No peeking.",
+    "type": "jigsaw",
+    "icon": "Puzzle",
+    "unlockAt": "2026-08-08T20:10:00+05:30",
+    "xpReward": 150,
+    "estMinutes": 3
+  },
+  {
+    "id": "datepicker",
+    "order": 8,
+    "missionLabel": "Mission 8",
+    "title": "Pick Your Night",
+    "subtitle": "Movie, time, food — your call.",
+    "type": "datepicker",
+    "icon": "Clapperboard",
+    "unlockAt": "2026-08-08T20:15:00+05:30",
+    "xpReward": 150,
+    "estMinutes": 2
+  },
+  {
+    "id": "delivery",
+    "order": 9,
+    "missionLabel": "Mission 9",
     "title": "Final Delivery",
     "subtitle": "Await the last transmission.",
     "type": "courier",

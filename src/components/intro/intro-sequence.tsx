@@ -5,8 +5,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BirthdayOpener } from "@/components/intro/birthday-opener";
+import { PetalFall } from "@/components/effects/petal-fall";
+import { PhotoRain } from "@/components/effects/photo-rain";
 import { luxuryEase } from "@/lib/motion";
-import { missionConfig } from "@/lib/config";
+import { missionConfig, chapters } from "@/lib/config";
 
 type Beat = "heart" | "line1" | "line2" | "line3" | "cta";
 
@@ -33,8 +35,13 @@ export function IntroSequence({ onComplete }: { onComplete: () => void }) {
   const currentLine = LINES.find((l) => l.key === beat)?.text;
 
   return (
-    <AnimatePresence mode="wait">
-      {showCelebration ? (
+    <>
+      {/* Mounted once for the whole entry — continues seamlessly across
+          the celebration → sequence transition instead of restarting. */}
+      <PetalFall />
+      <PhotoRain />
+      <AnimatePresence mode="wait">
+        {showCelebration ? (
         <BirthdayOpener key="celebration" onComplete={() => setShowCelebration(false)} />
       ) : (
         // Forced black regardless of the site's light/dark theme — this
@@ -78,8 +85,8 @@ export function IntroSequence({ onComplete }: { onComplete: () => void }) {
               >
                 <p className="font-display text-3xl font-light italic text-white sm:text-4xl">Find your gift.</p>
                 <p className="max-w-sm text-sm text-[#A0A0A0]">
-                  {missionConfig.recipientName}, seven missions stand between you and the truth. Some are already
-                  unlocked. Some will make you wait.
+                  {missionConfig.recipientName}, {chapters.length} missions stand between you and the truth. Some are
+                  already unlocked. Some will make you wait.
                 </p>
                 <Button
                   size="lg"
@@ -93,7 +100,8 @@ export function IntroSequence({ onComplete }: { onComplete: () => void }) {
             )}
           </AnimatePresence>
         </div>
-      )}
-    </AnimatePresence>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

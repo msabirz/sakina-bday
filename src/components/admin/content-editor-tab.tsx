@@ -30,7 +30,12 @@ const FILES: { key: string; label: string; data: unknown; hint: string }[] = [
   { key: "memories", label: "Memory Vault", data: memories, hint: "Timeline memories." },
   { key: "songs", label: "The Soundtrack", data: songs, hint: "Spotify embeds and per-song messages." },
   { key: "voice", label: "Voice Message", data: voiceMessage, hint: "Audio src path and message text." },
-  { key: "gift-games", label: "Guess Your Gift — Games", data: giftGames, hint: "All 6 mini-game configs." },
+  {
+    key: "gift-games",
+    label: "Guess Your Gift — Games",
+    data: giftGames,
+    hint: "6 games for the Guess Your Gift hub, plus config for the standalone jigsaw & date-picker missions.",
+  },
   {
     key: "letter-fragments",
     label: "Signal Fragments",
@@ -41,7 +46,7 @@ const FILES: { key: string; label: string; data: unknown; hint: string }[] = [
     key: "gift-reveal",
     label: "Gift Reveal",
     data: giftReveal,
-    hint: "What shows after the final phrase is unscrambled in Mission 7 — heading, message, image.",
+    hint: "What shows after the final phrase is unscrambled in the last mission (Final Delivery) — heading, message, image.",
   },
   {
     key: "background-music",

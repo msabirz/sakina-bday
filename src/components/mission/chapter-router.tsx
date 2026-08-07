@@ -7,6 +7,8 @@ import { SongsChapter } from "@/components/chapters/songs-chapter";
 import { VoiceChapter } from "@/components/chapters/voice-chapter";
 import { HuntChapter } from "@/components/chapters/hunt-chapter";
 import { GuessChapter } from "@/components/chapters/guess-chapter";
+import { JigsawChapter } from "@/components/chapters/jigsaw-chapter";
+import { DatePickerChapter } from "@/components/chapters/datepicker-chapter";
 import { DeliveryChapter } from "@/components/chapters/delivery-chapter";
 import { getChapter } from "@/lib/config";
 
@@ -30,6 +32,8 @@ export function ChapterRouter({ chapterId, onBack, onCompleteChapter }: ChapterR
       {chapter.type === "voice" && <VoiceChapter onComplete={onComplete} xpReward={chapter.xpReward} />}
       {chapter.type === "hunt" && <HuntChapter onComplete={onComplete} xpReward={chapter.xpReward} />}
       {chapter.type === "guess" && <GuessChapter onComplete={onComplete} xpReward={chapter.xpReward} />}
+      {chapter.type === "jigsaw" && <JigsawChapter onComplete={onComplete} xpReward={chapter.xpReward} />}
+      {chapter.type === "datepicker" && <DatePickerChapter onComplete={onComplete} xpReward={chapter.xpReward} />}
       {chapter.type === "courier" && <DeliveryChapter onComplete={onComplete} xpReward={chapter.xpReward} />}
     </ChapterShell>
   );

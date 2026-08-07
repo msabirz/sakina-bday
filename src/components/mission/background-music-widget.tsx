@@ -1,25 +1,52 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Music, X } from "lucide-react";
+import { Music, Pause, Play, X } from "lucide-react";
 import { GlassPanel } from "@/components/shared/glass-panel";
 import { backgroundMusic } from "@/lib/config";
+import { isAmbientPlaying, subscribeAmbient, toggleAmbient } from "@/lib/ambient-audio";
 
 /**
  * A small persistent "now playing" widget, mounted once above the
  * mission/chapter view-switcher so it survives navigation instead of
  * remounting (and restarting) on every screen change.
  *
- * Honest limitation: Spotify's embed can't silently autoplay — both the
- * browser's autoplay policy and Spotify's own embed require a real user
- * gesture — so this starts collapsed as an inviting pill rather than
- * pretending to play music nobody asked for yet.
+ * When `background-music.json` has an `audioSrc`, this reflects and
+ * controls that self-hosted track (which auto-starts from the birthday
+ * opener's first tap — see ambient-audio.ts). Without one, it falls back
+ * to a Spotify embed pill — honestly, that one can never truly autoplay,
+ * so it just starts collapsed rather than pretending otherwise.
  */
 export function BackgroundMusicWidget() {
   const [expanded, setExpanded] = useState(false);
+  const [playing, setPlaying] = useState(false);
+
+  useEffect(() => {
+    // Syncs to the module-level ambient-audio singleton's *current* state
+    // on mount (it may already be playing from the birthday opener), then
+    // subscribes for further changes.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setPlaying(isAmbientPlaying());
+    return subscribeAmbient(setPlaying);
+  }, []);
 
   if (!backgroundMusic.enabled) return null;
+
+  if (backgroundMusic.audioSrc) {
+    return (
+      <div className="fixed bottom-5 left-5 z-40">
+        <button
+          type="button"
+          onClick={() => toggleAmbient(backgroundMusic.audioSrc!)}
+          className="glass flex items-center gap-2 rounded-full px-4 py-2.5 text-xs text-text-secondary transition-colors hover:border-gold/40 hover:text-gold"
+        >
+          {playing ? <Pause className="size-3.5" /> : <Play className="size-3.5" />}
+          {backgroundMusic.label}
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="fixed bottom-5 left-5 z-40">

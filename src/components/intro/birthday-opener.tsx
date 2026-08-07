@@ -7,7 +7,8 @@ import { Button } from "@/components/ui/button";
 import { luxuryEase } from "@/lib/motion";
 import { fireBirthdayBurst, fireCelebration } from "@/lib/confetti";
 import { playHappyBirthdayMelody, playApplause, playBlowWhoosh } from "@/lib/birthday-audio";
-import { missionConfig } from "@/lib/config";
+import { playAmbient } from "@/lib/ambient-audio";
+import { missionConfig, backgroundMusic } from "@/lib/config";
 
 type Phase = "lit" | "blown" | "cut";
 
@@ -51,6 +52,9 @@ export function BirthdayOpener({ onComplete }: { onComplete: () => void }) {
     phaseRef.current = "blown";
     playBlowWhoosh();
     setTimeout(() => playApplause(0.9, 0.18), 450);
+    // This is her first tap on the site — the one and only moment browsers
+    // will reliably allow real audio to start without a further click.
+    if (backgroundMusic.audioSrc) playAmbient(backgroundMusic.audioSrc);
     setPhase("blown");
   }
 

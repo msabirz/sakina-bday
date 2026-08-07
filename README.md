@@ -1,10 +1,10 @@
 # Operation: Find Your Gift 💛
 
 A private, interactive birthday microsite — built as a luxury digital product, not a greeting card. It frames a
-delayed physical gift as the deliberate final act of a mission, not an apology: seven "missions" unlock through
+delayed physical gift as the deliberate final act of a mission, not an apology: nine "missions" unlock through
 the day, each a small chapter (a letter, a memory timeline, songs, a voice message, a hidden-signal hunt, six
-guessing games, and a final delivery/reveal). Progress, XP, achievements, and unlock times are all config-driven
-via JSON — no database.
+guessing games, a blind photo jigsaw, a just-for-fun date-night picker, and a final delivery/reveal). Progress,
+XP, achievements, and unlock times are all config-driven via JSON — no database.
 
 Built with **Next.js 16** (App Router, Turbopack), **TypeScript**, **Tailwind CSS v4**, **shadcn/ui**,
 **Framer Motion**, **GSAP**, and **Zustand**.
@@ -40,15 +40,15 @@ JSON, save, and (in `npm run dev`) it hot-reloads instantly.
 | File | What it controls |
 |---|---|
 | `mission.config.json` | Recipient/sender name, occasion, birthday date, site title, **admin password hash** |
-| `chapters.json` | The 7 missions — titles, subtitles, unlock times (`unlockAt`, ISO datetime), XP rewards |
+| `chapters.json` | The 9 missions — titles, subtitles, unlock times (`unlockAt`, ISO datetime), XP rewards |
 | `letter.json` | Mission 1's typewriter letter, line by line |
 | `memories.json` | Mission 2's Memory Vault timeline entries |
 | `songs.json` | Mission 3's tracks — Spotify embed URLs + a personal message per song |
 | `voice.json` | Mission 4's voice message — audio `src` path, title, message |
 | `treasure-hunt.json` | Mission 5's hidden-signal copy and how many signals are required |
-| `gift-games.json` | Mission 6's six mini-games (word scramble, 20 questions, higher/lower, blur reveal, emoji puzzle, multiple choice) |
+| `gift-games.json` | Mission 6's six-game hub (word scramble, 20 questions, higher/lower, blur reveal, emoji puzzle, multiple choice), plus config for the standalone Mission 7 (image jigsaw) and Mission 8 (date picker) |
 | `shipping.json` | The 5-step delivery timeline labels (Packed → With You) |
-| `endings.json` | Mission 7 — the **dynamic ending** (see below) + delayed/delivered/surprise content |
+| `endings.json` | Mission 9 (Final Delivery) — the **dynamic ending** (see below) + delayed/delivered/surprise content |
 | `achievements.json` | Visible + hidden secret achievements and their XP |
 | `letter-fragments.json` | The **13-tile cipher** (see §3.5) — the phrase to spell + which mission/game awards which letter |
 | `gift-reveal.json` | What's shown once that phrase is solved — heading, message, image |
@@ -75,7 +75,7 @@ placeholder in `src/components/chapters/vault-chapter.tsx`. A silent placeholder
 
 ## 3. Dynamic Endings
 
-Mission 7 ("Final Delivery") reads a single value — `mode` in `endings.json` — to decide how the story ends:
+Mission 9 ("Final Delivery") reads a single value — `mode` in `endings.json` — to decide how the story ends:
 
 - **`"delivered"`** — the gift has arrived. The shipping timeline completes, and the chapter reveals
   `endings.json → delivered` (name, description, celebration message) with confetti.
@@ -103,14 +103,14 @@ Instead of the gift being guessed in one isolated mini-game, it's assembled from
 - `"game:<id>"` — solving one of the 6 "Guess Your Gift" mini-games
 
 That's 5 + 6 + 1 = 12, plus finishing Mission 6 itself (`chapter:guess`, only possible once all 6 games are done)
-for the 13th — so the full set is *always* collected by the time Mission 7 unlocks; there's no dead end where a
+for the 13th — so the full set is *always* collected by the time Mission 7 (the first standalone bonus mission after Guess Your Gift) unlocks; there's no dead end where a
 tile is missing.
 
 Two things keep it from being guessable early:
 
 1. **Mission Control shows a "Signal Fragments" strip** that fills in live as she plays — but in a shuffled,
    per-playthrough-persisted slot order, so a partially-filled row never reads as a partial word.
-2. **The letters don't have to be solved into anything until Mission 7.** There, `DecodePuzzle`
+2. **The letters don't have to be solved into anything until the finale, Mission 9 (Final Delivery).** There, `DecodePuzzle`
    (`src/components/chapters/decode-puzzle.tsx`) presents all 13 collected tiles and she arranges them — reusing
    the same tap-a-tile interaction as the Word Scramble mini-game (both are built on the shared
    `src/components/shared/tile-unscramble.tsx`). Solving it reveals `gift-reveal.json`'s heading/message/image
@@ -208,7 +208,7 @@ src/
     mission/               # Mission Control home, mission cards, fragment strip, chapter shell/router,
                             # gift illustration, background music widget
     chapters/               # one component per mission (letter, vault, songs, voice, hunt, guess, delivery)
-                            # + decode-puzzle.tsx, the Mission 7 finale cipher
+                            # + decode-puzzle.tsx, the finale cipher, now in Mission 9
     games/                  # the 6 "Guess Your Gift" mini-games
     admin/                   # admin panel (login, live controls, uploads, content editor)
     effects/                  # fireflies, hidden stars, konami/shake listeners
@@ -255,7 +255,7 @@ src/
 
 ## 10. Deploying
 
-Any Node 20.9+ host works. On Vercel (or similar), the site, all 7 missions, games, and Live Controls work exactly
+Any Node 20.9+ host works. On Vercel (or similar), the site, all 9 missions, games, and Live Controls work exactly
 as they do locally — only the Admin panel's **Uploads** and **Content** tabs need a writable filesystem, so do
 those edits locally and redeploy. If you want those tabs to work in production too, self-host (a small VPS,
 Docker, `next start` behind a reverse proxy) instead of a serverless platform.

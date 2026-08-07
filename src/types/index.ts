@@ -11,6 +11,8 @@ export type ChapterType =
   | "voice"
   | "guess"
   | "hunt"
+  | "jigsaw"
+  | "datepicker"
   | "courier"
   | "final";
 
@@ -102,6 +104,23 @@ export interface MultipleChoiceConfig {
   options: MultipleChoiceOption[];
 }
 
+export interface ImageJigsawConfig {
+  /** An Admin-uploaded photo path. Empty until she's been given one to solve. */
+  image: string;
+  gridSize: number;
+  caption: string;
+}
+
+export interface DatePickerRound {
+  id: string;
+  prompt: string;
+  options: string[];
+}
+
+export interface DatePickerConfig {
+  rounds: DatePickerRound[];
+}
+
 export interface GiftGamesConfig {
   wordScramble: WordScrambleGame;
   twentyQuestions: TwentyQuestionsItem[];
@@ -109,6 +128,8 @@ export interface GiftGamesConfig {
   blurReveal: BlurRevealConfig;
   emojiPuzzle: EmojiPuzzleConfig;
   multipleChoice: MultipleChoiceConfig;
+  imageJigsaw: ImageJigsawConfig;
+  datePicker: DatePickerConfig;
 }
 
 export interface ShippingStep {
@@ -180,6 +201,14 @@ export interface BackgroundMusicConfig {
   enabled: boolean;
   label: string;
   spotifyEmbedUrl: string;
+  /**
+   * A self-hosted audio file (e.g. an Admin-uploaded path like
+   * /uploads/audio/our-song.mp3). When set, this is preferred over the
+   * Spotify embed — Spotify's iframe can never truly autoplay (cross-origin
+   * autoplay restriction, no way around it), but a same-origin file can
+   * start the instant she makes her first tap in the birthday opener.
+   */
+  audioSrc?: string;
 }
 
 export interface MissionSiteConfig {

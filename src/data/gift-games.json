@@ -38,5 +38,17 @@
       { "id": "box-c", "label": "Box C — wrapped in linen paper", "correct": false },
       { "id": "box-d", "label": "Box D — hidden inside a hat box", "correct": false }
     ]
+  },
+  "imageJigsaw": {
+    "image": "",
+    "gridSize": 3,
+    "caption": "Piece it together. No peeking at what it becomes until it's whole."
+  },
+  "datePicker": {
+    "rounds": [
+      { "id": "movie", "prompt": "Pick a vibe for the night.", "options": ["A Rom-Com", "A Thriller", "Whatever's Trending"] },
+      { "id": "time", "prompt": "Pick a time.", "options": ["Golden Hour", "Late Night", "Lazy Morning"] },
+      { "id": "food", "prompt": "Pick the food.", "options": ["Cozy Café", "Fancy Dinner", "Street Food Crawl"] }
+    ]
   }
 }

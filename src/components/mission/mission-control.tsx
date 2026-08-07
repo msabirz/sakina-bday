@@ -10,6 +10,7 @@ import { MissionCard } from "@/components/mission/mission-card";
 import { GiftIllustration } from "@/components/mission/gift-illustration";
 import { FragmentStrip } from "@/components/mission/fragment-strip";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
+import { ShareSnapButton } from "@/components/mission/share-snap-button";
 import { useMissionStore, xpToLevel, xpProgressWithinLevel, missionProgressPercent } from "@/store/mission-store";
 import { useNextUnlock } from "@/hooks/use-next-unlock";
 import { useCountdown, formatCountdown } from "@/hooks/use-countdown";
@@ -133,7 +134,11 @@ export function MissionControl({ onSelectChapter }: { onSelectChapter: (id: stri
         ))}
       </motion.div>
 
-      <motion.div variants={fadeUp} className="mt-20 text-center">
+      <motion.div variants={fadeUp} className="mt-16 flex justify-center">
+        <ShareSnapButton />
+      </motion.div>
+
+      <motion.div variants={fadeUp} className="mt-8 text-center">
         <Link href="/admin" className="text-[10px] uppercase tracking-[0.3em] text-text-secondary/40 hover:text-text-secondary">
           Command Center Access
         </Link>
