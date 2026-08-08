@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { memories } from "@/lib/config";
@@ -42,10 +43,17 @@ export function VaultChapter({ onComplete, xpReward }: { onComplete: () => void;
             style={memory.image ? undefined : { background: `linear-gradient(160deg, ${memory.gradient[0]}, ${memory.gradient[1]})` }}
           >
             {memory.image ? (
-              <img
+              // Small card thumbnail — next/image serves a resized/compressed
+              // version instead of the full camera-resolution original
+              // (several MB each), which matters once real network latency
+              // (not localhost) is in the picture.
+              <Image
                 src={memory.image}
                 alt={memory.title}
-                className="absolute inset-0 size-full object-cover transition-transform duration-500 group-hover:scale-105"
+                fill
+                sizes="224px"
+                quality={45}
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
             ) : null}
             <div

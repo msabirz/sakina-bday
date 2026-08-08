@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { memories } from "@/lib/config";
 
 interface FallingPhoto {
@@ -39,6 +40,12 @@ function generatePhotos(): FallingPhoto[] {
  * A gentle rain of her actual memory photos (or the gradient+emoji card
  * where no photo's been uploaded yet) — small tumbling polaroids, part of
  * the "grand entry" atmosphere alongside the petals.
+ *
+ * Uses next/image (not a plain <img>) on purpose: source photos are full
+ * camera-resolution (several MB each) and 8 of them load at once here at
+ * ~70px on screen — without server-side resizing that's tens of MB fetched
+ * simultaneously, which is invisible on localhost but genuinely fails to
+ * finish loading in time on a real phone connection.
  */
 export function PhotoRain() {
   const [photos] = useState<FallingPhoto[]>(generatePhotos);
@@ -47,39 +54,50 @@ export function PhotoRain() {
 
   return (
     <div className="pointer-events-none fixed inset-0 z-[55] overflow-hidden">
-      {photos.map((p) => (
-        <motion.div
-          key={p.id}
-          className="absolute -top-24 overflow-hidden rounded-lg border-2 border-white/80 shadow-xl"
-          style={{
-            left: p.left,
-            width: p.size,
-            height: p.size * 1.15,
-            background: p.memory.image
-              ? undefined
-              : `linear-gradient(160deg, ${p.memory.gradient[0]}, ${p.memory.gradient[1]})`,
-          }}
-          initial={{ y: -80, rotate: p.rotateStart, opacity: 0 }}
-          animate={{
-            y: "120vh",
-            x: [0, p.drift, -p.drift * 0.4, 0],
-            rotate: p.rotateStart + 180,
-            opacity: [0, 0.95, 0.95, 0],
-          }}
-          transition={{
-            duration: p.duration,
-            delay: p.delay,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        >
-          {p.memory.image ? (
-            <img src={p.memory.image} alt="" className="size-full object-cover" />
-          ) : (
-            <span className="flex size-full items-center justify-center text-xl">{p.memory.emoji}</span>
-          )}
-        </motion.div>
-      ))}
+      {photos.map((p) => {
+        const width = Math.round(p.size);
+        const height = Math.round(p.size * 1.15);
+        return (
+          <motion.div
+            key={p.id}
+            className="absolute -top-24 overflow-hidden rounded-lg border-2 border-white/80 shadow-xl"
+            style={{
+              left: p.left,
+              width,
+              height,
+              background: p.memory.image
+                ? undefined
+                : `linear-gradient(160deg, ${p.memory.gradient[0]}, ${p.memory.gradient[1]})`,
+            }}
+            initial={{ y: -80, rotate: p.rotateStart, opacity: 0 }}
+            animate={{
+              y: "120vh",
+              x: [0, p.drift, -p.drift * 0.4, 0],
+              rotate: p.rotateStart + 180,
+              opacity: [0, 0.95, 0.95, 0],
+            }}
+            transition={{
+              duration: p.duration,
+              delay: p.delay,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            {p.memory.image ? (
+              <Image
+                src={p.memory.image}
+                alt=""
+                width={width}
+                height={height}
+                quality={40}
+                className="size-full object-cover"
+              />
+            ) : (
+              <span className="flex size-full items-center justify-center text-xl">{p.memory.emoji}</span>
+            )}
+          </motion.div>
+        );
+      })}
     </div>
   );
 }
