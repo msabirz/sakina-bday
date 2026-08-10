@@ -6,8 +6,9 @@ import { CakeIllustration } from "@/components/intro/cake-illustration";
 import { Button } from "@/components/ui/button";
 import { luxuryEase } from "@/lib/motion";
 import { fireBirthdayBurst, fireCelebration } from "@/lib/confetti";
-import { playHappyBirthdayMelody, playApplause, playBlowWhoosh } from "@/lib/birthday-audio";
+import { playHappyBirthdayMelody, playApplause, playBlowWhoosh, isAudioUnlocked, primeAudioContext } from "@/lib/birthday-audio";
 import { playAmbient } from "@/lib/ambient-audio";
+import { installAudioUnlock } from "@/lib/audio-unlock";
 import { missionConfig, backgroundMusic } from "@/lib/config";
 
 type Phase = "lit" | "blown" | "cut";
@@ -25,12 +26,17 @@ const FALLBACK_CUT_MS = 3000;
  */
 export function BirthdayOpener({ onComplete }: { onComplete: () => void }) {
   const [phase, setPhase] = useState<Phase>("lit");
+  // True once we've reached "cut" and checked that no sound actually had a
+  // chance to play (she never touched the screen before the fallback timers
+  // carried the whole ritual on their own — see audio-unlock.ts).
+  const [audioMissed, setAudioMissed] = useState(false);
   // Guards against a tap and the fallback timer racing each other. A plain
   // ref (not the setState updater) so the side effects below run exactly
   // once, including under StrictMode's dev-only double-invocation.
   const phaseRef = useRef<Phase>("lit");
 
   useEffect(() => {
+    installAudioUnlock();
     const burst = setTimeout(() => fireCelebration(), 250);
     return () => clearTimeout(burst);
   }, []);
@@ -64,11 +70,29 @@ export function BirthdayOpener({ onComplete }: { onComplete: () => void }) {
     fireBirthdayBurst();
     playHappyBirthdayMelody();
     setPhase("cut");
+    // Give the resume() attempts above a moment to settle, then check
+    // whether anything actually had a chance to be heard. If she never
+    // touched the screen through both fallback timers, it didn't.
+    setTimeout(() => {
+      if (!isAudioUnlocked()) setAudioMissed(true);
+    }, 150);
   }
 
   function handleTap() {
     if (phase === "lit") handleBlow();
     else if (phase === "blown") handleCut();
+  }
+
+  // A real click, so this is exactly the trusted gesture the browser was
+  // waiting for — replay the sounds she missed the first time around.
+  function handleReplaySound(e: React.MouseEvent) {
+    e.stopPropagation();
+    primeAudioContext();
+    playBlowWhoosh();
+    setTimeout(() => playApplause(0.9, 0.18), 250);
+    setTimeout(() => playHappyBirthdayMelody(), 500);
+    if (backgroundMusic.audioSrc) playAmbient(backgroundMusic.audioSrc);
+    setAudioMissed(false);
   }
 
   const prompt =
@@ -139,6 +163,22 @@ export function BirthdayOpener({ onComplete }: { onComplete: () => void }) {
           )}
         </AnimatePresence>
       </div>
+
+      <AnimatePresence>
+        {phase === "cut" && audioMissed && (
+          <motion.button
+            key="replay-sound"
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+            onClick={handleReplaySound}
+            className="rounded-full border border-white/15 px-4 py-1.5 text-[11px] uppercase tracking-[0.15em] text-[#D4AF37] hover:border-[#D4AF37]/50"
+          >
+            🔊 Tap to hear it
+          </motion.button>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }

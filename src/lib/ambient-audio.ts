@@ -15,6 +15,10 @@
 let audioEl: HTMLAudioElement | null = null;
 const listeners = new Set<(playing: boolean) => void>();
 
+// A single silent frame — just enough for a real <audio> element to receive
+// a genuine, gesture-backed play() call before we know the real song yet.
+const SILENT_WAV = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=";
+
 function notify(playing: boolean) {
   listeners.forEach((fn) => fn(playing));
 }
@@ -32,6 +36,31 @@ function ensureAudio(src: string): HTMLAudioElement {
     audioEl.setAttribute("data-src", src);
   }
   return audioEl;
+}
+
+/**
+ * Warms up the shared <audio> element with a silent, gesture-backed play().
+ * A media element that has once played from a real tap keeps that
+ * permission for the rest of its life — so a *later* playAmbient(realSrc)
+ * call, even one that isn't itself inside a click handler, is allowed to
+ * proceed. Call this synchronously from the earliest tap anywhere on the
+ * page (see audio-unlock.ts), not just the one meant to start the song.
+ */
+export function primeAmbientAudio() {
+  if (typeof window === "undefined") return;
+  if (!audioEl) {
+    audioEl = new Audio();
+    audioEl.loop = true;
+    audioEl.volume = 0.32;
+    audioEl.addEventListener("play", () => notify(true));
+    audioEl.addEventListener("pause", () => notify(false));
+  }
+  if (audioEl.getAttribute("data-src")) return; // a real song is already queued — don't clobber it
+  audioEl.src = SILENT_WAV;
+  audioEl
+    .play()
+    .then(() => audioEl?.pause())
+    .catch(() => {});
 }
 
 /** Call synchronously from within a click/tap handler. */

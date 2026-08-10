@@ -18,6 +18,23 @@ function getContext(): AudioContext | null {
   return sharedContext;
 }
 
+/**
+ * Call synchronously from the earliest real tap anywhere on the page (not
+ * necessarily the one that plays a sound) — browsers only let a suspended
+ * AudioContext actually resume from inside a trusted gesture, but once it's
+ * running, every *later* scheduled sound plays fine even if the code that
+ * schedules it fires from a timer instead of a click. See audio-unlock.ts.
+ */
+export function primeAudioContext() {
+  getContext();
+}
+
+/** Whether the shared context actually made it to "running" — i.e. whether
+ * anything played so far had a real chance to be heard. */
+export function isAudioUnlocked(): boolean {
+  return sharedContext?.state === "running";
+}
+
 const NOTE_FREQ: Record<string, number> = {
   C4: 261.63,
   D4: 293.66,
